@@ -221,6 +221,7 @@ class SharedStateObj:
         self.__solve_pixel = config.Config().get_option("solve_pixel")
         self.__arch = None
         self.__camera_align = False
+        self.__cam_raw = None
         # Are we prepared to do alt/az math
         # We need gps lock and datetime
         self.__tz_finder = TimezoneFinder()
@@ -348,6 +349,12 @@ class SharedStateObj:
 
     def set_screen(self, v):
         self.__screen = v
+
+    def cam_raw(self):
+        return self.__cam_raw
+
+    def set_cam_raw(self, v):
+        self.__cam_raw = v
 
     def ui_state(self):
         return self.__ui_state

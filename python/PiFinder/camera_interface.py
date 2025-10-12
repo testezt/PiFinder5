@@ -34,6 +34,9 @@ class CameraInterface:
     def capture_file(self, filename) -> None:
         pass
 
+    def capture_bias(self) -> Image.Image:
+        return Image.Image()
+
     def set_camera_config(
         self, exposure_time: float, gain: float
     ) -> Tuple[float, float]:
@@ -86,6 +89,8 @@ class CameraInterface:
                     if not debug:
                         base_image = self.capture()
                         base_image = base_image.convert("L")
+                        bias_image = self.capture_bias()
+                        bias_image = bias_image.convert("L")
                         rotate_amount = 0
                         if camera_rotation is None:
                             if screen_direction in [

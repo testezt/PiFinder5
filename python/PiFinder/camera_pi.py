@@ -73,10 +73,13 @@ class CameraPI(CameraInterface):
             raw={"size": self.raw_size, "format": self.format},
         )
         self.camera.configure(cam_config)
+        self._default_controls()
+        self.start_camera()
+
+    def _default_controls(self) -> None:
         self.camera.set_controls({"AeEnable": False})
         self.camera.set_controls({"AnalogueGain": self.gain})
         self.camera.set_controls({"ExposureTime": self.exposure_time})
-        self.start_camera()
 
     def start_camera(self) -> None:
         self.camera.start()
@@ -127,6 +130,18 @@ class CameraPI(CameraInterface):
 
         return raw_image
 
+    def capture_bias(self) -> Image.Image:
+        """Capture a bias frame for dark subtraction"""
+        self.camera.stop()
+        self.camera.set_controls({"ExposureTime": 0})
+        self.camera.start()
+        tmp_capture = self.camera.capture_image()
+        self.camera.stop()
+        self._default_controls()
+        self.camera.start()
+        print("Bias frame has {np.mean(tmp_capture)=}, {np.std(tmp_capture)=}, {np.max(tmp_capture)=}, {np.min(tmp_capture)=}, {np.median(tmp_capture)=}")
+        return tmp_capture
+
     def capture_file(self, filename) -> None:
         tmp_capture = self.capture()
         tmp_capture.save(filename)
@@ -144,7 +159,7 @@ class CameraPI(CameraInterface):
         return self.camType
 
 
-def get_images(shared_state, camera_image, command_queue, console_queue, log_queue):
+def get_images(shared_state, camera_image, bias_image, command_queue, console_queue, log_queue):
     """
     Instantiates the camera hardware
     then calls the universal image loop
@@ -155,5 +170,5 @@ def get_images(shared_state, camera_image, command_queue, console_queue, log_que
     exposure_time = cfg.get_option("camera_exp")
     camera_hardware = CameraPI(exposure_time)
     camera_hardware.get_image_loop(
-        shared_state, camera_image, command_queue, console_queue, cfg
+        shared_state, camera_image, bias_image, command_queue, console_queue, cfg
     )
