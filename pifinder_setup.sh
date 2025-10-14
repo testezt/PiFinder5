@@ -13,11 +13,11 @@ if [[ -d PiFinder/ ]]; then
 else
     git clone --recursive --branch release https://github.com/testezt/PiFinder5.git
 fi
-cd ~/PiFinder/ && sudo pip install -r python/requirements.txt
+cd ~/PiFinder5/ && sudo pip install -r python/requirements.txt
 
 # Setup GPSD
 sudo dpkg-reconfigure -plow gpsd
-sudo cp ~/PiFinder/pi_config_files/gpsd.conf /etc/default/gpsd
+sudo cp ~/PiFinder5/pi_config_files/gpsd.conf /etc/default/gpsd
 
 # data dirs
 [[ -d ~/PiFinder_data ]] || \
@@ -35,21 +35,21 @@ mkdir ~/PiFinder_data/logs
 find ~/PiFinder_data -type d -exec chmod 755 {} \;
 
 # Wifi config
-sudo cp ~/PiFinder/pi_config_files/dhcpcd.* /etc
-sudo cp ~/PiFinder/pi_config_files/dhcpcd.conf.sta /etc/dhcpcd.conf
-sudo cp ~/PiFinder/pi_config_files/dnsmasq.conf /etc/dnsmasq.conf
-sudo cp ~/PiFinder/pi_config_files/hostapd.conf /etc/hostapd/hostapd.conf
-echo -n "Client" > ~/PiFinder/wifi_status.txt
+sudo cp ~/PiFinder5/pi_config_files/dhcpcd.* /etc
+sudo cp ~/PiFinder5/pi_config_files/dhcpcd.conf.sta /etc/dhcpcd.conf
+sudo cp ~/PiFinder5/pi_config_files/dnsmasq.conf /etc/dnsmasq.conf
+sudo cp ~/PiFinder5/pi_config_files/hostapd.conf /etc/hostapd/hostapd.conf
+echo -n "Client" > ~/PiFinder5/wifi_status.txt
 sudo systemctl unmask hostapd
 
 # open permissisons on wpa_supplicant file so we can adjust network config
 sudo chmod 666 /etc/wpa_supplicant/wpa_supplicant.conf
 
 # Samba config
-sudo cp ~/PiFinder/pi_config_files/smb.conf /etc/samba/smb.conf
+sudo cp ~/PiFinder5/pi_config_files/smb.conf /etc/samba/smb.conf
 
 # Hipparcos catalog
-HIP_MAIN_DAT="/home/pifinder/PiFinder/astro_data/hip_main.dat"
+HIP_MAIN_DAT="/home/PiFinder5/PiFinder/astro_data/hip_main.dat"
 if [[ ! -e $HIP_MAIN_DAT ]]; then
     wget -O $HIP_MAIN_DAT https://cdsarc.cds.unistra.fr/ftp/cats/I/239/hip_main.dat
 fi
@@ -65,14 +65,14 @@ grep -q "dtoverlay=pwm,pin=13,func=4" /boot/config.txt || \
    echo "dtoverlay=pwm,pin=13,func=4" | sudo tee -a /boot/config.txt
 grep -q "dtoverlay=uart3" /boot/config.txt || \
    echo "dtoverlay=uart3" | sudo tee -a /boot/config.txt
-# Note: camera types are added lateron by python/PiFinder/switch_camera.py
+# Note: camera types are added lateron by python/PiFinder5/switch_camera.py
 
 # Disable unwanted services
 sudo systemctl disable ModemManager
 
 # Enable service
-sudo cp /home/pifinder/PiFinder/pi_config_files/pifinder.service /lib/systemd/system/pifinder.service
-sudo cp /home/pifinder/PiFinder/pi_config_files/pifinder_splash.service /lib/systemd/system/pifinder_splash.service
+sudo cp /home/PiFinder5/PiFinder/pi_config_files/pifinder.service /lib/systemd/system/pifinder.service
+sudo cp /home/PiFinder5/PiFinder/pi_config_files/pifinder_splash.service /lib/systemd/system/pifinder_splash.service
 sudo systemctl daemon-reload
 sudo systemctl enable pifinder
 sudo systemctl enable pifinder_splash
