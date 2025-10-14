@@ -49,7 +49,7 @@ sudo chmod 666 /etc/wpa_supplicant/wpa_supplicant.conf
 sudo cp ~/PiFinder5/pi_config_files/smb.conf /etc/samba/smb.conf
 
 # Hipparcos catalog
-HIP_MAIN_DAT="/home/PiFinder5/PiFinder/astro_data/hip_main.dat"
+HIP_MAIN_DAT="/home/pifinder/PiFinder5/astro_data/hip_main.dat"
 if [[ ! -e $HIP_MAIN_DAT ]]; then
     wget -O $HIP_MAIN_DAT https://cdsarc.cds.unistra.fr/ftp/cats/I/239/hip_main.dat
 fi
@@ -71,8 +71,8 @@ grep -q "dtoverlay=uart3" /boot/config.txt || \
 sudo systemctl disable ModemManager
 
 # Enable service
-sudo cp /home/PiFinder5/PiFinder/pi_config_files/pifinder.service /lib/systemd/system/pifinder.service
-sudo cp /home/PiFinder5/PiFinder/pi_config_files/pifinder_splash.service /lib/systemd/system/pifinder_splash.service
+sudo cp /home/pifinder/PiFinder5/pi_config_files/pifinder.service /lib/systemd/system/pifinder.service
+sudo cp /home/pifinder/PiFinder5/pi_config_files/pifinder_splash.service /lib/systemd/system/pifinder_splash.service
 sudo systemctl daemon-reload
 sudo systemctl enable pifinder
 sudo systemctl enable pifinder_splash
