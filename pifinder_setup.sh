@@ -8,8 +8,8 @@ cd ~pifinder/
 
 sudo apt-get install -y git python3-pip samba samba-common-bin dnsmasq hostapd dhcpd gpsd
 
-if [[ -d PiFinder/ ]]; then
-    cd PiFinder/ && git config pull.rebase false && git pull
+if [[ -d PiFinder5/ ]]; then
+    cd PiFinder5/ && git config pull.rebase false && git pull
 else
     git clone --recursive --branch release https://github.com/testezt/PiFinder5.git
 fi
