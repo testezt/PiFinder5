@@ -1,6 +1,8 @@
 #!/usr/bin/bash
-# This script installs the PiFinder software on a prepared Raspberry Pi OS.
+# Raspberry Pi OS bookworm required
+# This script installs the PiFinder5 software on a prepared Raspberry Pi OS.
 # See https://pifinder.readthedocs.io/en/release/software.html for more info.
+# Python 3.10 should be installed
 
 set -e
 
