@@ -3,6 +3,8 @@
 # This script installs the PiFinder5 software on a prepared Raspberry Pi OS.
 # See https://pifinder.readthedocs.io/en/release/software.html for more info.
 # Python 3.10 should be installed
+# sudo apt remove python3-rpi.gpio 
+# pip3 install rpi-lgpio
 
 set -e
 
