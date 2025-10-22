@@ -7,9 +7,12 @@
 # Additional steps
 # Python 3.10 should be installed
 # sudo apt remove python3-rpi.gpio 
-# pip3 install rpi-lgpio
-# sudo apt install -y libcamera-apps python3-libcamera python3-kms++ libcap-dev python3-picamera2
-# pip install picamera2
+# sudo apt remove libexif-dev sudo apt remove ibavdevice-dev libavcodec-dev libavformat-dev libswresample-dev 
+# 
+# install libcamera 0.5.0+rpt20250429
+# pip3.10 install rpi-lgpio
+# sudo apt install -y libcap-dev python3-picamera2
+# pip3.10 install picamera2
 
 set -e
 
