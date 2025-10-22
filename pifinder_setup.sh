@@ -5,7 +5,7 @@
 
 
 # Additional steps
-# Python 3.10 should be installed
+# python3 -m pip config set global.break-system-packages true
 # sudo apt remove python3-rpi.gpio 
 # sudo apt remove libexif-dev sudo apt remove ibavdevice-dev libavcodec-dev libavformat-dev libswresample-dev 
 # 
