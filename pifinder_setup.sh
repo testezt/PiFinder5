@@ -22,7 +22,7 @@ if [[ -d PiFinder5/ ]]; then
 else
     git clone --recursive --branch release https://github.com/testezt/PiFinder5.git
 fi
-cd ~/PiFinder5/ && pip install -r python/requirements.txt
+cd ~/PiFinder5/ && pip3 install -r python/requirements.txt
 
 # Setup GPSD
 sudo dpkg-reconfigure -plow gpsd
