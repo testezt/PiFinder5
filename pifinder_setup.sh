@@ -2,9 +2,14 @@
 # Raspberry Pi OS bookworm required
 # This script installs the PiFinder5 software on a prepared Raspberry Pi OS.
 # See https://pifinder.readthedocs.io/en/release/software.html for more info.
+
+
+# Additional steps
 # Python 3.10 should be installed
 # sudo apt remove python3-rpi.gpio 
 # pip3 install rpi-lgpio
+# sudo apt install -y libcamera-apps python3-libcamera python3-kms++ libcap-dev python3-picamera2
+# pip install picamera2
 
 set -e
 
