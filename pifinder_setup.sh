@@ -13,6 +13,8 @@
 # pip3.10 install rpi-lgpio
 # sudo apt install -y libcap-dev python3-picamera2
 # pip3.10 install picamera2
+# sudo vi /boot/firmware/config.txt
+# add dtoverlay=pwm-2chan
 
 set -e
 
