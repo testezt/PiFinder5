@@ -14,6 +14,7 @@
 # pip3.10 install picamera2
 # sudo vi /boot/firmware/config.txt
 # dtoverlay=pwm-2chan,pin=13,func=4
+# enable serial port using sudo raspi-config
 
 set -e
 
