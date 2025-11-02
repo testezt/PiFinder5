@@ -9,12 +9,11 @@
 # sudo apt remove python3-rpi.gpio 
 # sudo apt remove libexif-dev sudo apt remove ibavdevice-dev libavcodec-dev libavformat-dev libswresample-dev 
 # 
-# install libcamera 0.5.0+rpt20250429
 # pip3.10 install rpi-lgpio
 # sudo apt install -y libcap-dev python3-picamera2
 # pip3.10 install picamera2
 # sudo vi /boot/firmware/config.txt
-# add dtoverlay=pwm-2chan
+# dtoverlay=pwm-2chan,pin=13,func=4
 
 set -e
 
