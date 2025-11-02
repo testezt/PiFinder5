@@ -15,7 +15,19 @@
 # sudo vi /boot/firmware/config.txt
 # dtoverlay=pwm-2chan,pin=13,func=4
 # enable serial port using sudo raspi-config
-
+# sudo vi /boot/firmware/config.txt
+# enable_uart=1
+# dtoverlay=uart2
+# dtparam=uart2=on
+# sudo apt-get install gpsd gpsd-clients
+# sudo vi /etc/default/gpsd
+# # They need to be read/writeable, either by user gpsd or the group dialout.
+# DEVICES="/dev/ttyAMA2"
+# Other options you want to pass to gpsd
+# GPSD_OPTIONS="-n"
+# Automatically hot add/remove USB GPS devices via gpsdctl
+# USBAUTO="true"
+                
 set -e
 
 cd ~pifinder/
