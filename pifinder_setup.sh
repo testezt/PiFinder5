@@ -27,6 +27,8 @@
 # GPSD_OPTIONS="-n"
 # Automatically hot add/remove USB GPS devices via gpsdctl
 # USBAUTO="true"
+# Add dns=dnsmasq in /etc/NetworkManage/NetworkManager.conf
+
                 
 set -e
 
@@ -61,15 +63,15 @@ mkdir ~/PiFinder_data/logs
 find ~/PiFinder_data -type d -exec chmod 755 {} \;
 
 # Wifi config
-sudo cp ~/PiFinder5/pi_config_files/dhcpcd.* /etc
-sudo cp ~/PiFinder5/pi_config_files/dhcpcd.conf.sta /etc/dhcpcd.conf
-sudo cp ~/PiFinder5/pi_config_files/dnsmasq.conf /etc/dnsmasq.conf
-sudo cp ~/PiFinder5/pi_config_files/hostapd.conf /etc/hostapd/hostapd.conf
-echo -n "Client" > ~/PiFinder5/wifi_status.txt
-sudo systemctl unmask hostapd
+#sudo cp ~/PiFinder5/pi_config_files/dhcpcd.* /etc
+#sudo cp ~/PiFinder5/pi_config_files/dhcpcd.conf.sta /etc/dhcpcd.conf
+#sudo cp ~/PiFinder5/pi_config_files/dnsmasq.conf /etc/dnsmasq.conf
+#sudo cp ~/PiFinder5/pi_config_files/hostapd.conf /etc/hostapd/hostapd.conf
+#echo -n "Client" > ~/PiFinder5/wifi_status.txt
+#sudo systemctl unmask hostapd
 
 # open permissisons on wpa_supplicant file so we can adjust network config
-sudo chmod 666 /etc/wpa_supplicant/wpa_supplicant.conf
+# sudo chmod 666 /etc/wpa_supplicant/wpa_supplicant.conf
 
 # Samba config
 sudo cp ~/PiFinder5/pi_config_files/smb.conf /etc/samba/smb.conf
