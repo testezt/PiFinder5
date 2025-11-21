@@ -19,6 +19,8 @@
 # enable_uart=1
 # dtoverlay=uart2
 # dtparam=uart2=on
+# dtoverlay=imx290,clock-frequency=74250000 #IMX462
+
 # sudo apt-get install gpsd gpsd-clients
 # sudo vi /etc/default/gpsd
 # # They need to be read/writeable, either by user gpsd or the group dialout.
@@ -29,7 +31,7 @@
 # USBAUTO="true"
 # Add dns=dnsmasq in /etc/NetworkManage/NetworkManager.conf
 
-                
+               
 set -e
 
 cd ~pifinder/
